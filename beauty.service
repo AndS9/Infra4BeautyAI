@@ -1,0 +1,11 @@
+[Unit]
+Description=beautyAIservice
+
+[Service]
+WorkingDirectory=/home/developer/beauty-ai-platform/backend/
+ExecStart=/bin/docker compose up -d --build
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
