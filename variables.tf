@@ -88,3 +88,20 @@ variable "security_rules" {
   ]
 }
 #______________________________________________________________________________|
+
+# VIRTUAL MACHINE VARIABLES
+variable "vm_name" {
+  description = "Virtual Machine Name"
+  type        = string
+  default     = "testVM"
+}
+variable "vm_size" {
+  description = "Size of VM"
+  type        = string
+  default     = "Standard_B1s"
+}
+variable "ssh_key_public" {
+  type    = string
+  default = "your-public-key-content"
+}
+#______________________________________________________________________________|
