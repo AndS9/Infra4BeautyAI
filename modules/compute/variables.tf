@@ -35,6 +35,7 @@ variable "extension_name" {
   type    = string
   default = "CustomScript"
 }
+
 variable "path_to_script" {
   type = string
 }
@@ -45,5 +46,14 @@ variable "SSH_key" {
 }
 
 variable "ssh_public_key_content" {
+  type = string
+}
+
+variable "secrets_vault_name" {
+  type    = string
+  default = "secretval"
+}
+
+variable "secrets_vault_rg" {
   type = string
 }

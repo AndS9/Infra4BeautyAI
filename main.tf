@@ -30,4 +30,6 @@ module "compute" {
   path_to_script          = "oncreatingVM.sh"
   SSH_key                 = "sshkey"
   ssh_public_key_content  = var.ssh_key_public
+  secrets_vault_name      = var.secrets_vault_name
+  secrets_vault_rg        = var.secrets_vault_rg
 }

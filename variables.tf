@@ -105,3 +105,13 @@ variable "ssh_key_public" {
   default = "your-public-key-content"
 }
 #______________________________________________________________________________|
+
+# SECRETS VAULT
+variable "secrets_vault_name" {
+  type    = string
+  default = "secretval"
+}
+
+variable "secrets_vault_rg" {
+  type = string
+}

@@ -30,7 +30,6 @@ resource "azurerm_linux_virtual_machine" "main" {
   network_interface_ids = [azurerm_network_interface.main.id]
   size                  = var.vm_size
 
-
   admin_username                  = "developer"
   disable_password_authentication = true
   computer_name                   = "todoapp-host"
@@ -39,6 +38,9 @@ resource "azurerm_linux_virtual_machine" "main" {
     offer     = "0001-com-ubuntu-server-jammy"
     sku       = "22_04-lts"
     version   = "latest"
+  }
+  identity {
+    type = "SystemAssigned"
   }
   os_disk {
     name                 = "myosdisk1"
@@ -63,4 +65,14 @@ resource "azurerm_virtual_machine_extension" "example" {
     script = base64encode(file("${path.module}/../../${var.path_to_script}"))
   })
 
+}
+data "azurerm_key_vault" "vault" {
+  name                = var.secrets_vault_name
+  resource_group_name = var.secrets_vault_rg
+}
+resource "azurerm_role_assignment" "kv_secrets_user" {
+  scope                = data.azurerm_key_vault.vault.id
+  role_definition_name = "Key Vault Secrets User"
+
+  principal_id = azurerm_linux_virtual_machine.main.identity[0].principal_id
 }
