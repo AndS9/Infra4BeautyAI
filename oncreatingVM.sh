@@ -24,15 +24,14 @@ usermod -aG docker developer
 curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 #Create a beauty.service for start app
-wget -O beauty.service https://raw.githubusercontent.com/AndS9/Infra4BeautyAI/refs/heads/service/beauty.service?token=GHSAT0AAAAAAEBTR6OWAV4XCGSRB4HRVOJE2TJ5W2A
-mv beauty.service /etc/systemd/system/
+wget -O beauty.service https://raw.githubusercontent.com/AndS9/Infra4BeautyAI/refs/heads/service/beauty.service?token=GHSAT0AAAAAAEBTR6OWPTL3YHLHGWQIZRLG2TJ7ZFA
+mv beauty.service /etc/systemd/system/beauty.service
+#Add start-stop scripts
+mkdir /home/developer/startup && cd /home/developer/startup
+wget -O start.sh https://raw.githubusercontent.com/AndS9/Infra4BeautyAI/refs/heads/service/start.sh?token=GHSAT0AAAAAAEBTR6OWYRZJ7P6FW6AW3GOW2TJ7PHQ
+wget -O stop.sh https://raw.githubusercontent.com/AndS9/Infra4BeautyAI/refs/heads/service/stop.sh?token=GHSAT0AAAAAAEBTR6OX7FL4S2O7S77IMK542TJ7QOA
 
-#Cloning git repos with app
-cd /home/developer
-git clone -b develop https://github.com/KLUZOO/beauty-ai-platform
-cd beauty-ai-platform/backend/
-
-
+#Creating .appenv from AzureKeyVault
 VAULT_NAME="secretskeysval"
 az login --identity
 
@@ -66,7 +65,7 @@ GOOGLE_CLIENT_ID=$(az keyvault secret show \
   --query value \
   -o tsv)
 
-cat > .env << EOF
+cat > .appenv << EOF
 DJANGO_SECRET_KEY="$DJANGO_SECRET_KEY"
 EMAIL_HOST="$EMAIL_HOST"
 EMAIL_HOST_PASSWORD="$EMAIL_HOST_PASSWORD"
@@ -81,5 +80,5 @@ CELERY_TIMEZONE=Europe/Kyiv
 EOF
 
 systemctl daemon-reload
-systemctl enable beauty.service
-systemctl start beauty.service
+#systemctl enable beauty.service
+#systemctl start beauty.service
