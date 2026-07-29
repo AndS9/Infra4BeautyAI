@@ -2,8 +2,10 @@
 Description=beautyAIservice
 
 [Service]
+Type=oneshot
 WorkingDirectory=/home/developer/beauty-ai-platform/backend/
 ExecStart=/bin/docker compose up -d --build
+ExecStop=/bin/docker compose down
 StandardOutput=syslog
 StandardError=syslog
 
