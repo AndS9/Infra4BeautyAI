@@ -1,13 +1,14 @@
 [Unit]
 Description=beautyAIservice
+Requires=docker.service
+After=docker.service
 
 [Service]
 Type=oneshot
+RemainAfterExit=yes
 WorkingDirectory=/home/developer/beauty-ai-platform/backend/
 ExecStart=/bin/docker compose up -d --build
 ExecStop=/bin/docker compose down
-StandardOutput=syslog
-StandardError=syslog
 
 [Install]
 WantedBy=multi-user.target
