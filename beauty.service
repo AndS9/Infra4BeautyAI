@@ -1,0 +1,14 @@
+[Unit]
+Description=beautyAIservice
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/developer/startapp
+ExecStart=./start.sh
+ExecStop=./stop.sh
+
+[Install]
+WantedBy=multi-user.target
