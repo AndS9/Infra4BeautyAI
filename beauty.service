@@ -6,9 +6,9 @@ After=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-WorkingDirectory=/home/developer/beauty-ai-platform/backend/
-ExecStart=/bin/docker compose up -d --build
-ExecStop=/bin/docker compose down
+WorkingDirectory=/home/developer/startapp
+ExecStart=./start.sh
+ExecStop=./stop.sh
 
 [Install]
 WantedBy=multi-user.target
