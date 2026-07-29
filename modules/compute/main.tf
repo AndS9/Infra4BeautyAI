@@ -32,7 +32,7 @@ resource "azurerm_linux_virtual_machine" "main" {
 
   admin_username                  = "developer"
   disable_password_authentication = true
-  computer_name                   = "todoapp-host"
+  computer_name                   = "devHost"
   source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"

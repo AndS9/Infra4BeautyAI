@@ -24,13 +24,12 @@ usermod -aG docker developer
 curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 #Create a beauty.service for start app
-wget -O beauty.service https://raw.githubusercontent.com/AndS9/Infra4BeautyAI/refs/heads/service/beauty.service?token=GHSAT0AAAAAAEBTR6OWPTL3YHLHGWQIZRLG2TJ7ZFA
+wget -O beauty.service https://raw.githubusercontent.com/AndS9/Infra4BeautyAI/refs/heads/main/beauty.service
 mv beauty.service /etc/systemd/system/beauty.service
-#Add start-stop scripts
 mkdir /home/developer/startup && cd /home/developer/startup
-wget -O start.sh https://raw.githubusercontent.com/AndS9/Infra4BeautyAI/refs/heads/service/start.sh?token=GHSAT0AAAAAAEBTR6OWYRZJ7P6FW6AW3GOW2TJ7PHQ
-wget -O stop.sh https://raw.githubusercontent.com/AndS9/Infra4BeautyAI/refs/heads/service/stop.sh?token=GHSAT0AAAAAAEBTR6OX7FL4S2O7S77IMK542TJ7QOA
-
+wget -O start.sh https://raw.githubusercontent.com/AndS9/Infra4BeautyAI/refs/heads/main/start.sh
+wget -O stop.sh https://raw.githubusercontent.com/AndS9/Infra4BeautyAI/refs/heads/main/stop.sh
+chmod u+x start.sh stop.sh
 #Creating .appenv from AzureKeyVault
 VAULT_NAME="secretskeysval"
 az login --identity
