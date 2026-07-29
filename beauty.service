@@ -6,9 +6,9 @@ After=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-WorkingDirectory=/home/developer/startapp
-ExecStart=./start.sh
-ExecStop=./stop.sh
+WorkingDirectory=/home/developer/startup
+ExecStart=/home/developer/startup/start.sh
+ExecStop=/home/developer/startup/stop.sh
 
 [Install]
 WantedBy=multi-user.target

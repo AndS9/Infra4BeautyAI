@@ -80,5 +80,5 @@ CELERY_TIMEZONE=Europe/Kyiv
 EOF
 
 systemctl daemon-reload
-#systemctl enable beauty.service
-#systemctl start beauty.service
+systemctl enable beauty.service
+systemctl start beauty.service
