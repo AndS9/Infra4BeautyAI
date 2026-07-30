@@ -1,24 +1,13 @@
 #!/bin/bash
 set -e
-DEBIAN_FRONTEND=noninteractive #Disactivate Interctive windows during installation apt packages
 
-apt-get update
-apt-get install -y ca-certificates curl
-install -m 0755 -d /etc/apt/keyrings
+#Mounting disk
+wget https://raw.githubusercontent.com/AndS9/Infra4BeautyAI/refs/heads/develop/scripts/mount-disk.sh
+/bin/bash ./mount-disk.sh
 
-#Installing docker-daemon and tools
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-chmod a+r /etc/apt/keyrings/docker.asc
-
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
-  tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-
-apt-get update
-apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-usermod -aG docker developer
+#Installing docker
+wget https://raw.githubusercontent.com/AndS9/Infra4BeautyAI/refs/heads/develop/scripts/docker-install-ubuntu.sh
+/bin/bash ./docker-install-ubuntu.sh
 
 #Installing AzureCLI
 curl -sL https://aka.ms/InstallAzureCLIDeb | bash

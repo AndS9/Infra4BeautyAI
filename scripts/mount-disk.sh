@@ -4,17 +4,24 @@ set -e
 # Mount disk
 LUN=10
 
-DEVICE=""
-while [ ! -b "$DEVICE" ]; do
-    DEVICE=$(readlink -f /dev/disk/azure/scsi1/lun$LUN)
-    sleep 2
+LINK="/dev/disk/azure/scsi1/lun$LUN"
+while [ ! -L "$LINK" ]; do
+    sleep 1
 done
+
+DEVICE=$(readlink -f "$LINK")
 parted $DEVICE --script mklabel gpt
 parted $DEVICE --script mkpart primary ext4 0% 100%
 partprobe $DEVICE
+udevadm settle
 
 TARGET_DISK="${DEVICE}1"
-MOUNT_POINT="/mnt/dbstorage"
+
+while [ ! -b "$TARGET_DISK" ]; do
+    sleep 1
+done
+
+MOUNT_POINT="/beautyDB"
 FSTYPE="ext4"
 mkfs.$FSTYPE $TARGET_DISK
 mkdir -p $MOUNT_POINT
