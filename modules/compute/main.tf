@@ -55,6 +55,7 @@ resource "azurerm_linux_virtual_machine" "main" {
 }
 
 resource "azurerm_virtual_machine_extension" "startup" {
+  depends_on           = [azurerm_virtual_machine_data_disk_attachment.dbattach]
   name                 = var.extension_name
   virtual_machine_id   = azurerm_linux_virtual_machine.main.id
   publisher            = "Microsoft.Azure.Extensions"
@@ -64,20 +65,6 @@ resource "azurerm_virtual_machine_extension" "startup" {
   protected_settings = jsonencode({
     script = base64encode(file("${path.module}/../../${var.path_to_startscript}"))
   })
-
-}
-resource "azurerm_virtual_machine_extension" "mountdisk" {
-  depends_on           = [azurerm_virtual_machine_data_disk_attachment.dbattach]
-  name                 = var.extension_name
-  virtual_machine_id   = azurerm_linux_virtual_machine.main.id
-  publisher            = "Microsoft.Azure.Extensions"
-  type                 = "CustomScript"
-  type_handler_version = "2.0"
-
-  protected_settings = jsonencode({
-    script = base64encode(file("${path.module}/../../${var.path_to_mountscript}"))
-  })
-
 }
 
 resource "azurerm_managed_disk" "dbdata" {

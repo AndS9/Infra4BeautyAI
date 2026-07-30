@@ -28,7 +28,6 @@ module "compute" {
   NSG_id                  = module.network.NSG_id
   extension_name          = "OnCreatingScript"
   path_to_startscript     = "./scripts/oncreatingVM.sh"
-  path_to_mountscript     = "./scripts/mount-disk.sh"
   SSH_key                 = "sshkey"
   ssh_public_key_content  = var.ssh_key_public
   secrets_vault_name      = var.secrets_vault_name

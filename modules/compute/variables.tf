@@ -39,9 +39,6 @@ variable "extension_name" {
 variable "path_to_startscript" {
   type = string
 }
-variable "path_to_mountscript" {
-  type = string
-}
 variable "SSH_key" {
   type    = string
   default = "linuxboxsshkey"

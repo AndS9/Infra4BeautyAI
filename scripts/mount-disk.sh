@@ -8,7 +8,7 @@ DEVICE=""
 while [ ! -b "$DEVICE" ]; do
     DEVICE=$(readlink -f /dev/disk/azure/scsi1/lun$LUN)
     sleep 2
-
+done
 parted $DEVICE --script mklabel gpt
 parted $DEVICE --script mkpart primary ext4 0% 100%
 partprobe $DEVICE
