@@ -14,7 +14,7 @@ parted $DEVICE --script mkpart primary ext4 0% 100%
 partprobe $DEVICE
 
 TARGET_DISK="${DEVICE}1"
-MOUNT_POINT="/mnt/dbstorage"
+MOUNT_POINT="/beautyDB"
 FSTYPE="ext4"
 mkfs.$FSTYPE $TARGET_DISK
 mkdir -p $MOUNT_POINT
