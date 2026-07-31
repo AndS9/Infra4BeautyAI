@@ -13,6 +13,7 @@ DEVICE=$(readlink -f "$LINK")
 parted $DEVICE --script mklabel gpt
 parted $DEVICE --script mkpart primary ext4 0% 100%
 partprobe $DEVICE
+udevadm settle
 
 TARGET_DISK="${DEVICE}1"
 
