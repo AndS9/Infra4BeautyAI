@@ -54,7 +54,8 @@ resource "azurerm_linux_virtual_machine" "main" {
   }
 }
 
-resource "azurerm_virtual_machine_extension" "example" {
+resource "azurerm_virtual_machine_extension" "startup" {
+  depends_on           = [azurerm_virtual_machine_data_disk_attachment.dbattach]
   name                 = var.extension_name
   virtual_machine_id   = azurerm_linux_virtual_machine.main.id
   publisher            = "Microsoft.Azure.Extensions"
@@ -62,10 +63,31 @@ resource "azurerm_virtual_machine_extension" "example" {
   type_handler_version = "2.0"
 
   protected_settings = jsonencode({
-    script = base64encode(file("${path.module}/../../${var.path_to_script}"))
+    script = base64encode(file("${path.module}/../../${var.path_to_startscript}"))
   })
+}
+
+resource "azurerm_managed_disk" "dbdata" {
+  lifecycle {
+    prevent_destroy = true
+  }
+  name                 = "beautyAIdata"
+  location             = var.resource_group_location
+  resource_group_name  = var.resource_group_name
+  storage_account_type = "StandardSSD_LRS"
+  create_option        = "Empty"
+  disk_size_gb         = "8"
+  zone                 = "1"
 
 }
+resource "azurerm_virtual_machine_data_disk_attachment" "dbattach" {
+  managed_disk_id    = azurerm_managed_disk.dbdata.id
+  virtual_machine_id = azurerm_linux_virtual_machine.main.id
+  lun                = "10"
+  caching            = "ReadOnly"
+}
+
+
 data "azurerm_key_vault" "vault" {
   name                = var.secrets_vault_name
   resource_group_name = var.secrets_vault_rg
