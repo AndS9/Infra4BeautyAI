@@ -17,12 +17,12 @@ else
 fi
 
 cp /home/developer/.appenv \
-   "$FRONT_DIR/frontend/.env"
+   "$FRONT_DIR/beauty-ai-platform/frontend/.env"
 
-cd "$FRONT_DIR/frontend"
+cd "$FRONT_DIR/beauty-ai-platform/frontend"
 
 docker build -t beauty-frontend:latest .
 docker run -d --name beauty-frontend \
     -p 80:8080 \
-    --env-file /home/developer/.appenv \
+    --env-file "$FRONT_DIR/beauty-ai-platform/frontend/.env" \
     beauty-frontend:latest
