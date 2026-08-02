@@ -4,6 +4,7 @@ set -e
 FRONT_DIR="/home/developer/frontend_service/beauty-ai-platform"
 
 if [ ! -d "$FRONT_DIR/.git" ]; then
+    mkdir -p /home/developer/frontend_service
     cd /home/developer/frontend_service
     git clone -b frontend https://github.com/KLUZOO/beauty-ai-platform
 else
