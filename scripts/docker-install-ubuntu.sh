@@ -6,7 +6,6 @@ sudo sed -i "s/^#\?\$nrconf{restart}.*/\$nrconf{restart} = 'a';/" \
 
 export DEBIAN_FRONTEND=noninteractive #Disactivate Interctive windows during installation apt packages
 sudo apt update
-sudo apt upgrade -y
 sudo apt install -y ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
