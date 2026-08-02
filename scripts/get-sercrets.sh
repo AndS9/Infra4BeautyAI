@@ -35,7 +35,7 @@ GOOGLE_CLIENT_ID=$(az keyvault secret show \
   --query value \
   -o tsv)
 
-cat > .appenv << EOF
+cat > /home/developer/.appenv << EOF
 DJANGO_SECRET_KEY="$DJANGO_SECRET_KEY"
 EMAIL_HOST="$EMAIL_HOST"
 EMAIL_HOST_PASSWORD="$EMAIL_HOST_PASSWORD"
