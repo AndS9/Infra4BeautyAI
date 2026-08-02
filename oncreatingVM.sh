@@ -17,6 +17,11 @@ cd /home/developer/Infra4BeautyAI/scripts
 /bin/bash ./get-secrets.sh
 
 
+#Create a db and admin panel for the app
+mv /home/developer/Infra4BeautyAI/db_service/db.service /etc/systemd/system/db.service
+cd /home/developer/Infra4BeautyAI/db_service
+chmod u+x ./start.sh ./stop.sh
+
 #Create a beauty.service for start app
 mv /home/developer/Infra4BeautyAI/beauty_service/beauty.service /etc/systemd/system/beauty.service
 cd /home/developer/Infra4BeautyAI/beauty_service
@@ -27,10 +32,6 @@ mv /home/developer/Infra4BeautyAI/frontend_service/frontend.service /etc/systemd
 cd /home/developer/Infra4BeautyAI/frontend_service
 chmod u+x ./start.sh ./stop.sh
 
-#Create a db and admin panel for the app
-mv /home/developer/Infra4BeautyAI/db_service/db.service /etc/systemd/system/db.service
-cd /home/developer/Infra4BeautyAI/db_service
-chmod u+x ./start.sh ./stop.sh
 
 
 systemctl daemon-reload
