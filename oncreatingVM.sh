@@ -6,15 +6,15 @@ set -e
 git clone https://github.com/AndS9/Infra4BeautyAI
 mv Infra4BeautyAI /home/developer/Infra4BeautyAI
 
-#cd /home/developer/Infra4BeautyAI/scripts
+cd /home/developer/Infra4BeautyAI/scripts
 #Mounting disk
-#/bin/bash ./mount-disk.sh
+/bin/bash ./mount-disk.sh
 
 #Installing docker
-#/bin/bash ./docker-install-ubuntu.sh
+/bin/bash ./docker-install-ubuntu.sh
 
 #Environment variables for docker
-#/bin/bash ./get-secrets.sh
+/bin/bash ./get-secrets.sh
 
 
 #Create a beauty.service for start app

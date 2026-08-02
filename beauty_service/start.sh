@@ -12,7 +12,7 @@ else
     git reset --hard origin/develop
 fi
 
-cp /home/developer/startup/.appenv \
+cp /home/developer/.appenv \
    "$REPO_DIR/backend/.env"
 
 cd "$REPO_DIR/backend"
