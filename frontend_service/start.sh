@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-FRONT_DIR="/home/developer/frontend_service"
+FRONT_DIR="/home/developer/frontend_service/beauty-ai-platform"
 
 if [ ! -d "$FRONT_DIR" ]; then
     mkdir -p "$FRONT_DIR"
