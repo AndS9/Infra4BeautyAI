@@ -6,9 +6,9 @@ After=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-WorkingDirectory=/home/developer/Infra4BeautyAI/beauty_service
-ExecStart=/home/developer/Infra4BeautyAI/beauty_service/start.sh
-ExecStop=/home/developer/Infra4BeautyAI/beauty_service/stop.sh
+WorkingDirectory=/home/developer/Infra4BeautyAI/db_service
+ExecStart=/home/developer/Infra4BeautyAI/db_service/start.sh
+ExecStop=/home/developer/Infra4BeautyAI/db_service/stop.sh
 
 [Install]
 WantedBy=multi-user.target
