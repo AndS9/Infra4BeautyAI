@@ -28,5 +28,5 @@ cd /home/developer/Infra4BeautyAI/frontend_service
 chmod u+x ./start.sh ./stop.sh
 
 systemctl daemon-reload
-systemctl enable beauty.service frontend.service
-systemctl start beauty.service frontend.service
+#systemctl enable beauty.service frontend.service
+#systemctl start beauty.service frontend.service

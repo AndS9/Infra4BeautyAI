@@ -1,5 +1,5 @@
 [Unit]
-Description=beautyFronted
+Description=beautyFrontend
 Requires=docker.service
 After=docker.service
 
