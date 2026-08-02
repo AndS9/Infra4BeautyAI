@@ -20,13 +20,15 @@ cd /home/developer/Infra4BeautyAI/scripts
 #Create a beauty.service for start app
 mv /home/developer/Infra4BeautyAI/beauty_service/beauty.service /etc/systemd/system/beauty.service
 cd /home/developer/Infra4BeautyAI/beauty_service
-#chmod u+x ./start.sh ./stop.sh
+chmod u+x ./start.sh ./stop.sh
 
 #Create a beauty-frontend.service for start frontend
 mv /home/developer/Infra4BeautyAI/frontend_service/frontend.service /etc/systemd/system/frontend.service
 cd /home/developer/Infra4BeautyAI/frontend_service
-#chmod u+x ./start.sh ./stop.sh
+chmod u+x ./start.sh ./stop.sh
 
 systemctl daemon-reload
 systemctl enable beauty.service frontend.service
 systemctl start beauty.service frontend.service
+
+cd /home/developer/Infra4BeautyAI
