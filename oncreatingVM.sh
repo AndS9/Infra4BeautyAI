@@ -27,8 +27,12 @@ mv /home/developer/Infra4BeautyAI/frontend_service/frontend.service /etc/systemd
 cd /home/developer/Infra4BeautyAI/frontend_service
 chmod u+x ./start.sh ./stop.sh
 
-systemctl daemon-reload
-systemctl enable beauty.service frontend.service
-systemctl start beauty.service frontend.service
+#Create a db and admin panel for the app
+mv /home/developer/Infra4BeautyAI/db_service/db.service /etc/systemd/system/db.service
+cd /home/developer/Infra4BeautyAI/db_service
+chmod u+x ./start.sh ./stop.sh
 
-cd /home/developer/Infra4BeautyAI
+
+systemctl daemon-reload
+systemctl enable beauty.service frontend.service db.service
+systemctl start beauty.service frontend.service db.service
