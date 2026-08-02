@@ -3,10 +3,6 @@ set -e
 
 FRONT_DIR="/home/developer/frontend_service/beauty-ai-platform"
 
-if [ ! -d "$FRONT_DIR" ]; then
-    mkdir -p "$FRONT_DIR"
-fi
-
 if [ ! -d "$FRONT_DIR/.git" ]; then
     cd /home/developer/frontend_service
     git clone -b frontend https://github.com/KLUZOO/beauty-ai-platform
@@ -17,12 +13,12 @@ else
 fi
 
 cp /home/developer/.appenv \
-   "$FRONT_DIR/beauty-ai-platform/frontend/.env"
+   "$FRONT_DIR/frontend/.env"
 
-cd "$FRONT_DIR/beauty-ai-platform/frontend"
+cd "$FRONT_DIR/frontend"
 
 docker build -t beauty-frontend:latest .
 docker run -d --name beauty-frontend \
     -p 80:8080 \
-    --env-file "$FRONT_DIR/beauty-ai-platform/frontend/.env" \
+    --env-file "$FRONT_DIR/frontend/.env" \
     beauty-frontend:latest
