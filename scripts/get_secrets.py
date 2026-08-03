@@ -6,8 +6,8 @@ from azure.keyvault.secrets import SecretClient
 VAULT_URL = sys.argv[1]
 env_path = sys.argv[2]
 
-def convert_name(str: name) -> str:
-    return str.replace("-", "_").upper()
+def convert_name(name: str) -> str:
+    return name.replace("-", "_").upper()
 
 
 if __name__ == "__main__":
