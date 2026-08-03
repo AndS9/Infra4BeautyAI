@@ -5,7 +5,7 @@ REPO_DIR="/home/developer/beauty-ai-platform"
 
 if [ ! -d "$REPO_DIR/.git" ]; then
     cd /home/developer
-    git clone -b develop https://github.com/KLUZOO/beauty-ai-platform
+    git clone -b develop https://github.com/AndS9/beauty-ai-platform
 else
     cd "$REPO_DIR"
     git fetch origin
