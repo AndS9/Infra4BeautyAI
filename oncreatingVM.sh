@@ -37,5 +37,5 @@ chmod u+x ./start.sh ./stop.sh
 mv /home/developer/Infra4BeautyAI/webhook_listener/webhook.service /etc/systemd/system/webhook.service
 
 systemctl daemon-reload
-systemctl enable backend.service frontend.service db.service
-systemctl start backend.service frontend.service db.service
+systemctl enable backend.service frontend.service db.service webhook.service
+systemctl start backend.service frontend.service db.service webhook.service
