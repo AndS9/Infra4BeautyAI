@@ -16,6 +16,8 @@ cd /home/developer/Infra4BeautyAI/scripts
 #Environment variables for docker
 /bin/bash ./get-secrets.sh
 
+sudo apt install -y python3-pip
+pip install flask
 
 #Create a db and admin panel for the app
 mv /home/developer/Infra4BeautyAI/db_service/db.service /etc/systemd/system/db.service
@@ -32,8 +34,8 @@ mv /home/developer/Infra4BeautyAI/frontend_service/frontend.service /etc/systemd
 cd /home/developer/Infra4BeautyAI/frontend_service
 chmod u+x ./start.sh ./stop.sh
 
-
+mv /home/developer/Infra4BeautyAI/webhook_listener/webhook.service /etc/systemd/system/webhook.service
 
 systemctl daemon-reload
-systemctl enable beauty.service frontend.service db.service
-systemctl start beauty.service frontend.service db.service
+systemctl enable backend.service frontend.service db.service
+systemctl start backend.service frontend.service db.service
