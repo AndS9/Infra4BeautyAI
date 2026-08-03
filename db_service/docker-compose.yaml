@@ -4,7 +4,7 @@ services:
     container_name: postgres
     ports: 
       - 5432:5432
-    environment:
+    env_file:
       - /root/.db.env
     volumes:
       - beautyDB:/var/lib/postgresql
@@ -14,7 +14,7 @@ services:
     container_name: admin-panel
     ports:
       - 7000:80
-    environment:
+    env_file:
       - /root/.admin.env
 volumes:
   beautyDB:
