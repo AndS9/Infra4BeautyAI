@@ -48,7 +48,12 @@ variable "ssh_public_key_content" {
   type = string
 }
 
-variable "secrets_vault_name" {
+variable "secrets_vault_name_adm" {
+  type    = string
+  default = "secretval"
+}
+
+variable "secrets_vault_name_app" {
   type    = string
   default = "secretval"
 }

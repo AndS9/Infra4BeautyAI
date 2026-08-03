@@ -88,12 +88,24 @@ resource "azurerm_virtual_machine_data_disk_attachment" "dbattach" {
 }
 
 
-data "azurerm_key_vault" "vault" {
-  name                = var.secrets_vault_name
+data "azurerm_key_vault" "vault_adm" {
+  name                = var.secrets_vault_name_adm
   resource_group_name = var.secrets_vault_rg
 }
-resource "azurerm_role_assignment" "kv_secrets_user" {
-  scope                = data.azurerm_key_vault.vault.id
+
+data "azurerm_key_vault" "vault_app" {
+  name                = var.secrets_vault_name_app
+  resource_group_name = var.secrets_vault_rg
+}
+
+resource "azurerm_role_assignment" "kv_secrets_user1" {
+  scope                = data.azurerm_key_vault.vault_adm.id
+  role_definition_name = "Key Vault Secrets User"
+
+  principal_id = azurerm_linux_virtual_machine.main.identity[0].principal_id
+}
+resource "azurerm_role_assignment" "kv_secrets_user2" {
+  scope                = data.azurerm_key_vault.vault_app.id
   role_definition_name = "Key Vault Secrets User"
 
   principal_id = azurerm_linux_virtual_machine.main.identity[0].principal_id

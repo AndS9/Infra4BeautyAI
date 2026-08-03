@@ -107,11 +107,14 @@ variable "ssh_key_public" {
 #______________________________________________________________________________|
 
 # SECRETS VAULT
-variable "secrets_vault_name" {
+variable "secrets_vault_name_adm" {
   type    = string
   default = "secretval"
 }
-
+variable "secrets_vault_name_app" {
+  type    = string
+  default = "secretval"
+}
 variable "secrets_vault_rg" {
   type = string
 }
