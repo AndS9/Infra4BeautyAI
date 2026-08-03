@@ -3,9 +3,12 @@ Description=Webhook github listener
 After=network.target
 
 [Service]
-Type=service
+Type=simple
+User=developer
+Group=developer
+WorkingDirectory=/home/developer/Infra4BeautyAI/webhook_listener
+ExecStart=/bin/python3 /home/developer/Infra4BeautyAI/webhook_listener/listener.py
 Restart=always
-ExecStart=/bin/python /home/developer/Infra4BeautyAI/webhook_listener/listener.py
 
 [Install]
 WantedBy=multi-user.target
