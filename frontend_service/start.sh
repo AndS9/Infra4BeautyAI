@@ -13,9 +13,6 @@ else
     git reset --hard origin/frontend
 fi
 
-cp /home/developer/.appenv \
-   "$FRONT_DIR/frontend/.env"
-
 cd "$FRONT_DIR/frontend"
 
 docker build -t beauty-frontend:latest .
