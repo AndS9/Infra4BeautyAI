@@ -41,11 +41,11 @@ mv /home/developer/Infra4BeautyAI/webhook_listener/webhook.service /etc/systemd/
 cd /home/developer/Infra4BeautyAI/scripts
 
 #Admin panel secrets
-/bin/bash ./get-secrets.sh https://keyvaultadmpanel.vault.azure.net/ \
+/bin/python3 ./get-secrets.py https://keyvaultadmpanel.vault.azure.net/ \
     /home/developer/Infra4BeautyAI/db_service/admin.env
 
 #database and backend secrets
-/bin/bash ./get-secrets.sh https://keyvaultbeautyapp.vault.azure.net/ \
+/bin/python3 ./get-secrets.py https://keyvaultbeautyapp.vault.azure.net/ \
     /home/developer/Infra4BeautyAI/backend_service/db.env
 
 #backend secrets
