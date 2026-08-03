@@ -12,7 +12,7 @@ else
     git reset --hard origin/develop
 fi
 
-cp /home/developer/Infra4BeautyAI/environments/backend.env \
+cp /root/.db.env \
    "$REPO_DIR/backend/.env"
 
 cd "$REPO_DIR/backend"
