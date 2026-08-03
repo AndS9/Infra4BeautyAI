@@ -1,8 +1,10 @@
 #!/bin/bash
 set -e
 
-#apt update && apt upgrade -y
+timedatectl set-timezone Europe/Kyiv
 
+#apt update && apt upgrade -y
+timedatectl set-timezone Europe/Kyiv
 git clone https://github.com/AndS9/Infra4BeautyAI
 mv Infra4BeautyAI /home/developer/Infra4BeautyAI
 
@@ -13,11 +15,10 @@ cd /home/developer/Infra4BeautyAI/scripts
 #Installing docker
 /bin/bash ./docker-install-ubuntu.sh
 
-#Environment variables for docker
-/bin/bash ./get-secrets.sh
+
 
 sudo apt install -y python3-pip
-pip install flask
+pip install -r /home/developer/Infra4BeautyAI/requirements.txt
 
 #Create a db and admin panel for the app
 mv /home/developer/Infra4BeautyAI/db_service/db.service /etc/systemd/system/db.service
@@ -35,6 +36,21 @@ cd /home/developer/Infra4BeautyAI/frontend_service
 chmod u+x ./start.sh ./stop.sh
 
 mv /home/developer/Infra4BeautyAI/webhook_listener/webhook.service /etc/systemd/system/webhook.service
+
+#Environment variables and secrets
+cd /home/developer/Infra4BeautyAI/scripts
+
+#Admin panel secrets
+/bin/bash ./get-secrets.sh https://keyvaultadmpanel.vault.azure.net/ \
+    /home/developer/Infra4BeautyAI/db_service/admin.env
+
+#database and backend secrets
+/bin/bash ./get-secrets.sh https://keyvaultbeautyapp.vault.azure.net/ \
+    /home/developer/Infra4BeautyAI/backend_service/db.env
+
+#backend secrets
+cat /home/developer/Infra4BeautyAI/backend_service/db.env >> \
+    /home/developer/Infra4BeautyAI/environments/backend.env
 
 systemctl daemon-reload
 systemctl enable backend.service frontend.service db.service webhook.service

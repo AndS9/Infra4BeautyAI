@@ -21,5 +21,5 @@ cd "$FRONT_DIR/frontend"
 docker build -t beauty-frontend:latest .
 docker run -d --name beauty-frontend \
     -p 80:8080 \
-    --env-file "$FRONT_DIR/frontend/.env" \
+    --env-file /home/developer/Infra4BeautyAI/environments/frontend.env \
     beauty-frontend:latest
