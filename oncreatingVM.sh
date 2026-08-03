@@ -23,8 +23,8 @@ cd /home/developer/Infra4BeautyAI/db_service
 chmod u+x ./start.sh ./stop.sh
 
 #Create a beauty.service for start app
-mv /home/developer/Infra4BeautyAI/beauty_service/beauty.service /etc/systemd/system/beauty.service
-cd /home/developer/Infra4BeautyAI/beauty_service
+mv /home/developer/Infra4BeautyAI/backend_service/backend.service /etc/systemd/system/backend.service
+cd /home/developer/Infra4BeautyAI/backend_service
 chmod u+x ./start.sh ./stop.sh
 
 #Create a beauty-frontend.service for start frontend

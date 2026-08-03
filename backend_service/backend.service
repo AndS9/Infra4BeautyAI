@@ -1,0 +1,14 @@
+[Unit]
+Description=backendservice
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/developer/Infra4BeautyAI/backend_service
+ExecStart=/home/developer/Infra4BeautyAI/backend_service/start.sh
+ExecStop=/home/developer/Infra4BeautyAI/backend_service/stop.sh
+
+[Install]
+WantedBy=multi-user.target
