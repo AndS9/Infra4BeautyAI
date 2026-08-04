@@ -14,6 +14,6 @@ fi
 
 cd $REPO_DIR/backend
 
-/bin/docker build -t beautyai_backend .
+/bin/docker build -t backend .
 
 systemctl start db.service

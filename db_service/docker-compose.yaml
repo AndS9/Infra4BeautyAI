@@ -1,7 +1,7 @@
 services:
   web:
-    image: beautyai_backend:latest
-    container_name: beautyai_backend
+    image: backend:latest
+    container_name: backend
     command: >
       sh -c "
         python manage.py migrate &&
@@ -17,7 +17,7 @@ services:
       redis:
         condition: service_started
   celery:
-    image: beautyai_backend:latest
+    image: backend:latest
     container_name: celery_worker
     command: celery -A config worker -l info
     env_file:
@@ -26,7 +26,7 @@ services:
       - redis
 
   beat:
-    image: beautyai_backend:latest
+    image: backend:latest
     container_name: celery_beat
     command: celery -A config beat -l info
     env_file:
