@@ -53,5 +53,5 @@ cat /home/developer/Infra4BeautyAI/environments/backend.env >> \
     /root/.db.env
 
 systemctl daemon-reload
-systemctl enable db.service frontend.service webhook.service backend.service
+systemctl enable backend.service frontend.service webhook.service
 systemctl start backend.service frontend.service webhook.service 

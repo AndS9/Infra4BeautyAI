@@ -1,7 +1,7 @@
 services:
   web:
     image: backend:latest
-    container_name: backend
+    container_name: beauty-web
     command: >
       sh -c "
         python manage.py migrate &&

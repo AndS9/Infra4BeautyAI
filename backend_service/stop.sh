@@ -1,4 +1,3 @@
 #!/bin/bash
-cd /home/developer/beauty-ai-platform/backend
-
-systemctl stop db.service
+/bin/docker stop backend celery_worker celery_beat
+/bin/docker rm backend celery_worker celery_beat
