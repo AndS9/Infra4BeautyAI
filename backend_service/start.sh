@@ -12,9 +12,8 @@ else
     git reset --hard origin/develop
 fi
 
-cp /root/.db.env \
-   "$REPO_DIR/backend/.env"
+cd $REPO_DIR/backend
 
-cd "$REPO_DIR/backend"
+/bin/docker build -t beautyai_backend .
 
-docker compose up -d --build
+systemctl start db.service
