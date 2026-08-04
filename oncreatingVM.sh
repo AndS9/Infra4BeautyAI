@@ -20,10 +20,6 @@ cd /home/developer/Infra4BeautyAI/scripts
 sudo apt install -y python3-pip
 pip install -r /home/developer/Infra4BeautyAI/requirements.txt
 
-#Create a db and admin panel for the app
-mv /home/developer/Infra4BeautyAI/db_service/db.service /etc/systemd/system/db.service
-cd /home/developer/Infra4BeautyAI/db_service
-chmod u+x ./start.sh ./stop.sh
 
 #Create a beauty.service for start app
 mv /home/developer/Infra4BeautyAI/backend_service/backend.service /etc/systemd/system/backend.service
