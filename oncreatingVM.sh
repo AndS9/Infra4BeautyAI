@@ -41,16 +41,16 @@ mv /home/developer/Infra4BeautyAI/webhook_listener/webhook.service /etc/systemd/
 cd /home/developer/Infra4BeautyAI/scripts
 
 #Admin panel secrets
-/bin/python3 ./get-secrets.py https://keyvaultadmpanel.vault.azure.net/ \
-    /home/developer/Infra4BeautyAI/db_service/admin.env
+/bin/python3 ./get_secrets.py https://keyvaultadmpanel.vault.azure.net/ \
+    /root/.admin.env
 
 #database and backend secrets
-/bin/python3 ./get-secrets.py https://keyvaultbeautyapp.vault.azure.net/ \
-    /home/developer/Infra4BeautyAI/backend_service/db.env
+/bin/python3 ./get_secrets.py https://keyvaultbeautyapp.vault.azure.net/ \
+   /root/.db.env
 
 #backend secrets
-cat /home/developer/Infra4BeautyAI/backend_service/db.env >> \
-    /home/developer/Infra4BeautyAI/environments/backend.env
+cat /home/developer/Infra4BeautyAI/environments/backend.env >> \
+    /root/.db.env
 
 systemctl daemon-reload
 systemctl enable backend.service frontend.service db.service webhook.service

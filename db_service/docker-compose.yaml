@@ -16,6 +16,8 @@ services:
       - 7000:80
     env_file:
       - /root/.admin.env
+    environment:
+      - TZ=Europe/Kyiv
 volumes:
   beautyDB:
     driver: local
