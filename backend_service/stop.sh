@@ -1,3 +1,3 @@
 #!/bin/bash
-/bin/docker stop backend celery_worker celery_beat
-/bin/docker rm backend celery_worker celery_beat
+/bin/docker stop beauty-web celery_worker celery_beat
+/bin/docker rm beauty-web celery_worker celery_beat
