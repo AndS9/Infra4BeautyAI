@@ -33,6 +33,8 @@ chmod u+x ./start.sh ./stop.sh
 
 mv /home/developer/Infra4BeautyAI/webhook_listener/webhook.service /etc/systemd/system/webhook.service
 
+#Add flushdb script
+mv /home/developer/Infra4BeautyAI/scripts/flushdb.sh /home/developer/flushdb.sh
 #Environment variables and secrets
 cd /home/developer/Infra4BeautyAI/scripts
 
@@ -51,3 +53,4 @@ cat /home/developer/Infra4BeautyAI/environments/backend.env >> \
 systemctl daemon-reload
 systemctl enable backend.service frontend.service webhook.service
 systemctl start backend.service frontend.service webhook.service 
+docker exec beauty-web python manage.py createsuperuser --noinput
