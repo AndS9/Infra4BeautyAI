@@ -18,4 +18,3 @@ cd $REPO_DIR/backend
 
 cd /home/developer/Infra4BeautyAI/backend_service
 /bin/docker compose -f docker-compose.yaml up -d
-docker exec beauty-web sh -c "python manage.py createsuperuser --noinput" || true
