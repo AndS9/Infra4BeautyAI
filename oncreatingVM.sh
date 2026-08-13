@@ -4,7 +4,6 @@ set -e
 timedatectl set-timezone Europe/Kyiv
 
 #apt update && apt upgrade -y
-timedatectl set-timezone Europe/Kyiv
 git clone https://github.com/AndS9/Infra4BeautyAI
 mv Infra4BeautyAI /home/developer/Infra4BeautyAI
 
@@ -33,6 +32,11 @@ chmod u+x ./start.sh ./stop.sh
 
 mv /home/developer/Infra4BeautyAI/webhook_listener/webhook.service /etc/systemd/system/webhook.service
 
+# Add beauty-logs.service
+mv /home/developer/Infra4BeautyAI/loki_service/loki.service /etc/systemd/system/loki.service
+cd /home/developer/Infra4BeautyAI/loki_service
+chmod u+x ./start.sh ./stop.sh
+
 #Add flushdb script
 mv /home/developer/Infra4BeautyAI/scripts/flushdb.sh /home/developer/flushdb.sh
 chmod u+x /home/developer/flushdb.sh
@@ -52,5 +56,5 @@ cat /home/developer/Infra4BeautyAI/environments/backend.env >> \
     /root/.db.env
 
 systemctl daemon-reload
-systemctl enable backend.service frontend.service webhook.service
-systemctl start backend.service frontend.service webhook.service 
+systemctl enable backend.service frontend.service webhook.service loki.service
+systemctl start backend.service frontend.service webhook.service loki.service
