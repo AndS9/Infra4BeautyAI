@@ -32,5 +32,6 @@ module "compute" {
   ssh_public_key_content  = var.ssh_key_public
   secrets_vault_name_adm  = var.secrets_vault_name_adm
   secrets_vault_name_app  = var.secrets_vault_name_app
+  secrets_vault_name_cert = var.secrets_vault_name_cert
   secrets_vault_rg        = var.secrets_vault_rg
 }

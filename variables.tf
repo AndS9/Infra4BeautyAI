@@ -115,6 +115,10 @@ variable "secrets_vault_name_app" {
   type    = string
   default = "secretval"
 }
+variable "secrets_vault_name_cert" {
+  type    = string
+  default = "secretval"
+}
 variable "secrets_vault_rg" {
   type = string
 }

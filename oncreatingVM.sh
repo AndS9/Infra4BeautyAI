@@ -30,6 +30,7 @@ mv /home/developer/Infra4BeautyAI/frontend_service/frontend.service /etc/systemd
 cd /home/developer/Infra4BeautyAI/frontend_service
 chmod u+x ./start.sh ./stop.sh
 
+#Webhook listener
 mv /home/developer/Infra4BeautyAI/webhook_listener/webhook.service /etc/systemd/system/webhook.service
 
 # Add beauty-logs.service
@@ -40,21 +41,25 @@ chmod u+x ./start.sh ./stop.sh
 #Add flushdb script
 mv /home/developer/Infra4BeautyAI/scripts/flushdb.sh /home/developer/flushdb.sh
 chmod u+x /home/developer/flushdb.sh
+
+
 #Environment variables and secrets
 cd /home/developer/Infra4BeautyAI/scripts
-
 #Admin panel secrets
 /bin/python3 ./get_secrets.py https://keyvaultadmpanel.vault.azure.net/ \
     /root/.admin.env
-
 #database and backend secrets
 /bin/python3 ./get_secrets.py https://keyvaultbeautyapp.vault.azure.net/ \
    /root/.db.env
-
 #backend secrets
 cat /home/developer/Infra4BeautyAI/environments/backend.env >> \
     /root/.db.env
 
+# Add server.crt and server.key
+mkdir -p /etc/nginx/ssl
+/bin/python3 /home/developer/Infra4BeautyAI/scripts/get_server_secrets.py
+
+# Starting services
 systemctl daemon-reload
 systemctl enable backend.service frontend.service webhook.service loki.service
 systemctl start backend.service frontend.service webhook.service loki.service
