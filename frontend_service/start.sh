@@ -17,6 +17,10 @@ cd "$FRONT_DIR/frontend"
 
 docker build -t beauty-frontend:latest .
 docker run -d --name beauty-frontend \
-    -p 80:8080 \
+    --network=host \
+    --user 0 \
     --env-file /home/developer/Infra4BeautyAI/environments/frontend.env \
+    -v /home/developer/Infra4BeautyAI/frontend_service/default.conf:/etc/nginx/conf.d/default.conf \
+    -v /etc/nginx/ssl/server.crt:/etc/nginx/ssl/server.crt \
+    -v /etc/nginx/ssl/server.key:/etc/nginx/ssl/server.key \
     beauty-frontend:latest
