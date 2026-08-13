@@ -115,7 +115,7 @@ resource "azurerm_role_assignment" "kv_secrets_user2" {
   principal_id = azurerm_linux_virtual_machine.main.identity[0].principal_id
 }
 
-resource "azurerm_role_assignment" "kv_secrets_user2" {
+resource "azurerm_role_assignment" "kv_secrets_user3" {
   scope                = data.azurerm_key_vault.vault_cert.id
   role_definition_name = "Key Vault Secrets User"
 
