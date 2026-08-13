@@ -58,7 +58,8 @@ cat /home/developer/Infra4BeautyAI/environments/backend.env >> \
 # Add server.crt and server.key
 mkdir -p /etc/nginx/ssl
 /bin/python3 /home/developer/Infra4BeautyAI/scripts/get_server_secrets.py
-
+chmod 600 /etc/nginx/ssl/server.key
+chmod 644 /etc/nginx/ssl/server.crt
 # Starting services
 systemctl daemon-reload
 systemctl enable backend.service frontend.service webhook.service loki.service
