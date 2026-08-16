@@ -35,3 +35,9 @@ module "compute" {
   secrets_vault_name_cert = var.secrets_vault_name_cert
   secrets_vault_rg        = var.secrets_vault_rg
 }
+
+resource "azurerm_role_assignment" "github_actions" {
+  scope                = azurerm_resource_group.group_name.id
+  role_definition_name = "Contributor"
+  principal_id         = "484e831f-cff8-44dc-807f-cfc99643120a"
+}
