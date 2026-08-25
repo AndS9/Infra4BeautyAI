@@ -1,0 +1,15 @@
+[Unit]
+Description=db-panel
+Requires=backend.service
+After=backend.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/developer/Infra4BeautyAI/dbpanel_service
+ExecStart=/bin/docker run -d -p 8080:8080 --name db-panel --env-file /root/.admin.env andriis9/db-panel
+ExecStop=/bin/docker stop db-panel
+ExecStopPost=/bin/docker rm -f db-panel
+
+[Install]
+WantedBy=multi-user.target

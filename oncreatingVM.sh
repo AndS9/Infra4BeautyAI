@@ -44,6 +44,7 @@ chmod u+x /home/developer/flushdb.sh
 
 # Add igorfrontend_service and shutdown_service
 mv /home/developer/Infra4BeautyAI/igorfrontend_service/igorfrontend.service /etc/systemd/system/igorfrontend.service
+mv /home/developer/Infra4BeautyAI/dbpanel_service/dbpanel.service /etc/systemd/system/dbpanel.service
 mv /home/developer/Infra4BeautyAI/shutdown_service/shutdown.service /etc/systemd/system/shutdown.service
 mv /home/developer/Infra4BeautyAI/shutdown_service/shutdown.timer /etc/systemd/system/shutdown.timer
 
@@ -66,5 +67,5 @@ mkdir -p /etc/nginx/ssl
 
 # Starting services
 systemctl daemon-reload
-systemctl enable backend.service frontend.service webhook.service loki.service shutdown.timer igorfrontend.service 
-systemctl start backend.service frontend.service webhook.service loki.service shutdown.timer igorfrontend.service 
+systemctl enable backend.service frontend.service webhook.service loki.service shutdown.timer igorfrontend.service dbpanel.service
+systemctl start backend.service frontend.service webhook.service loki.service shutdown.timer igorfrontend.service dbpanel.service
