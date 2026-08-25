@@ -22,4 +22,4 @@ if __name__ == "__main__":
         for secret_properties in client.list_properties_of_secrets():
             secret_name = secret_properties.name
             secret = client.get_secret(secret_name)
-            f.write(f"{convert_name(secret_name)}=\"{secret.value}\"\n")
+            f.write(f"{convert_name(secret_name)}={secret.value}\n")
