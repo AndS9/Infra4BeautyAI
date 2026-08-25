@@ -1,0 +1,7 @@
+[Unit]
+Description=Shutdown system
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/shutdown -h now
+

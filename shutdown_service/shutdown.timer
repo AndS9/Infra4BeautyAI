@@ -1,0 +1,9 @@
+[Unit]
+Description=Shutdown 30 minutes after boot
+
+[Timer]
+OnBootSec=30min
+Unit=shutdown.service
+
+[Install]
+WantedBy=timers.target
