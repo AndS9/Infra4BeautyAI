@@ -108,10 +108,10 @@ services:
       - grafana-storage:/var/lib/grafana
 
        # Grafana provisioning configuration
-      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./provisioning:/etc/grafana/provisioning
 
       # Dashboard JSON files
-      - ./grafana/provisioning/dashboards:/var/lib/grafana/dashboards
+      - ./provisioning/dashboards:/var/lib/grafana/dashboards
     networks:
       - loki
 
