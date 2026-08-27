@@ -42,6 +42,11 @@ chmod u+x ./start.sh ./stop.sh
 mv /home/developer/Infra4BeautyAI/scripts/flushdb.sh /home/developer/flushdb.sh
 chmod u+x /home/developer/flushdb.sh
 
+# #Add init_db script
+# mv /home/developer/Infra4BeautyAI/scripts/init_db.sh /home/developer/init_db.sh
+# chmod u+x /home/developer/init_db.sh
+
+
 # Add igorfrontend_service and shutdown_service
 mv /home/developer/Infra4BeautyAI/igorfrontend_service/igorfrontend.service /etc/systemd/system/igorfrontend.service
 mv /home/developer/Infra4BeautyAI/dbpanel_service/dbpanel.service /etc/systemd/system/dbpanel.service
