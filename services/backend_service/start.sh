@@ -16,5 +16,5 @@ cd $REPO_DIR/backend
 
 /bin/docker build -t backend .
 
-cd /home/developer/Infra4BeautyAI/backend_service
+cd /home/developer/Infra4BeautyAI/services/backend_service
 /bin/docker compose -f docker-compose.yaml up -d
