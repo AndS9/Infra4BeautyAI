@@ -89,30 +89,14 @@ services:
     image: grafana/grafana:latest
     environment:
       - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+
+      - GF_SECURITY_ADMIN_USER=andrii
+      - GF_SECURITY_ADMIN_PASSWORD=adminadmin
+
       - GF_SERVER_ROOT_URL=%(protocol)s://%(domain)s/grafana/
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
     depends_on:
       - gateway
-    entrypoint:
-      - sh
-      - -euc
-      - |
-        mkdir -p /etc/grafana/provisioning/datasources
-        cat <<EOF > /etc/grafana/provisioning/datasources/ds.yaml
-        apiVersion: 1
-        datasources:
-          - name: Loki
-            type: loki
-            access: proxy
-            url: http://gateway:3100
-            jsonData:
-              httpHeaderName1: "X-Scope-OrgID"
-            secureJsonData:
-              httpHeaderValue1: "tenant1"
-        EOF
-        /run.sh
     ports:
       - "3000:3000"
     healthcheck:
@@ -122,6 +106,12 @@ services:
       retries: 5
     volumes:
       - grafana-storage:/var/lib/grafana
+
+       # Grafana provisioning configuration
+      - ./grafana/provisioning:/etc/grafana/provisioning
+
+      # Dashboard JSON files
+      - ./grafana/provisioning/dashboards:/var/lib/grafana/dashboards
     networks:
       - loki
 
