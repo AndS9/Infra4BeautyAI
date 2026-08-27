@@ -6,8 +6,8 @@ After=network.target
 Type=simple
 User=developer
 Group=developer
-WorkingDirectory=/home/developer/Infra4BeautyAI/webhook_listener
-ExecStart=/bin/python3 /home/developer/Infra4BeautyAI/webhook_listener/listener.py
+WorkingDirectory=/home/developer/Infra4BeautyAI/services/webhook_listener
+ExecStart=/bin/python3 /home/developer/Infra4BeautyAI/services/webhook_listener/listener.py
 Restart=always
 
 [Install]

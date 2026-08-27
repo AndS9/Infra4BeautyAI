@@ -6,7 +6,7 @@ After=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-WorkingDirectory=/home/developer/Infra4BeautyAI/igorfrontend_service
+WorkingDirectory=/home/developer/Infra4BeautyAI/services/igorfrontend_service
 ExecStart=/bin/docker run -d -p 5173:5173 --name igor-frontend andriis9/igor-frontend
 ExecStop=/bin/docker stop igor-frontend
 ExecStopPost=/bin/docker rm -f igor-frontend

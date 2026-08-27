@@ -6,9 +6,9 @@ After=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-WorkingDirectory=/home/developer/Infra4BeautyAI/loki_service
-ExecStart=/home/developer/Infra4BeautyAI/loki_service/start.sh
-ExecStop=/home/developer/Infra4BeautyAI/loki_service/stop.sh
+WorkingDirectory=/home/developer/Infra4BeautyAI/services/loki_service
+ExecStart=/home/developer/Infra4BeautyAI/services/loki_service/start.sh
+ExecStop=/home/developer/Infra4BeautyAI/services/loki_service/stop.sh
 
 [Install]
 WantedBy=multi-user.target
