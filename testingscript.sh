@@ -48,6 +48,9 @@ chmod u+x /home/developer/flushdb.sh
 mv /home/developer/Infra4BeautyAI/scripts/init_db.sh /home/developer/init_db.sh
 chmod u+x /home/developer/init_db.sh
 
+# Start all services in services directory
+/bin/python3 /home/developer/Infra4BeautyAI/scripts/init_services.py
+/bin/bash /home/developer/Infra4BeautyAI/scripts/init_db.sh
 # #Create a beauty.service for start app
 # mv /home/developer/Infra4BeautyAI/backend_service/backend.service /etc/systemd/system/backend.service
 # cd /home/developer/Infra4BeautyAI/backend_service

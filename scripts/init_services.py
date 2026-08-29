@@ -5,7 +5,7 @@ import subprocess
 from pathlib import Path
 
 
-SERVICES_DIR = Path("../services")
+SERVICES_DIR = Path("/home/developer/Infra4BeautyAI/services")
 SYSTEMD_DIR = Path("/etc/systemd/system")
 
 UNIT_SUFFIXES = {".service", ".timer"}
