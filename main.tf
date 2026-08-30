@@ -27,7 +27,7 @@ module "compute" {
   public_ip_id            = module.network.public_ip_id
   NSG_id                  = module.network.NSG_id
   extension_name          = "OnCreatingScript"
-  path_to_startscript     = "./testingscript.sh"
+  path_to_startscript     = "./oncreatingVM.sh"
   SSH_key                 = "sshkey"
   ssh_public_key_content  = var.ssh_key_public
   secrets_vault_name_adm  = var.secrets_vault_name_adm
