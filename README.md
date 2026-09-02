@@ -69,7 +69,7 @@ Set the following in a `terraform.tfvars` file(local, ssh )
 | `ssh_key_public` | Public key content for VM login |
 | `secrets_vault_name_adm`, `secrets_vault_name_app`, `secrets_vault_name_cert`, `secrets_vault_rg` | Existing Key Vault names/RG the VM identity will read from |
 
-To setup TLS cert/key change `./scripts/get_server_secrets.py` VAULT_URL to Azure Key Vault with yours `server-crt` and `server-key`.
+To setup TLS cert/key change in `./scripts/get_server_secrets.py` `VAULT_URL` to AzureKeyVault url with yours `server-crt` and `server-key`.
 
  ## Usage
 
