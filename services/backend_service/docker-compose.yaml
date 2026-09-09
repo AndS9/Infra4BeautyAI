@@ -67,7 +67,7 @@ services:
     image: assistant:latest
     container_name: aiassistant
     env_file:
-      - /root/.admin.env
+      - /root/.db.env
     environment:
       - DRF_BASE_URL=http://web:8000
     ports:
