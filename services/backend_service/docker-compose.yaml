@@ -66,8 +66,9 @@ services:
   ai-assistant:
     image: assistant:latest
     container_name: aiassistant
+    env_file:
+      - /root/.admin.env
     environment:
-      - GEMINI_API_KEY=placeholder_for_api_key
       - DRF_BASE_URL=http://web:8000
     ports:
       - 8001:8001
