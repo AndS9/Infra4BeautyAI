@@ -39,5 +39,5 @@ module "compute" {
 resource "azurerm_role_assignment" "github_actions" {
   scope                = azurerm_resource_group.group_name.id
   role_definition_name = "Contributor"
-  principal_id         = "484e831f-cff8-44dc-807f-cfc99643120a"
+  principal_id         = "84f5331f-663c-4102-9f0f-44a886308eb1"
 }

@@ -4,7 +4,7 @@ import sys
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
 
-VAULT_URL = "https://keyvaultbeautycert.vault.azure.net/"
+VAULT_URL = "https://keyvaultbeautycert1.vault.azure.net/"
 
 def format_secret(content: str, header: str, footer: str) -> str:
     body = content[len(header):-len(footer)]

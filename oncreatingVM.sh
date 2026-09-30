@@ -24,11 +24,11 @@ pip install -r /home/developer/Infra4BeautyAI/requirements.txt
 cd /home/developer/Infra4BeautyAI/scripts
 
 #Admin panel secrets
-/bin/python3 ./get_secrets.py https://keyvaultadmpanel.vault.azure.net/ \
+/bin/python3 ./get_secrets.py https://keyvaultadmpanel1.vault.azure.net/ \
     /root/.admin.env
 
 #database and backend secrets
-/bin/python3 ./get_secrets.py https://keyvaultbeautyapp.vault.azure.net/ \
+/bin/python3 ./get_secrets.py https://keyvaultbeautyapp1.vault.azure.net/ \
    /root/.db.env
 
 #add backend environments to env-file
