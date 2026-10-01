@@ -29,7 +29,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   resource_group_name   = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.main.id]
   size                  = var.vm_size
-
+  zone = "2"
   admin_username                  = "developer"
   disable_password_authentication = true
   computer_name                   = "devHost"
