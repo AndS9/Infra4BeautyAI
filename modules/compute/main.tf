@@ -77,7 +77,7 @@ resource "azurerm_managed_disk" "dbdata" {
   storage_account_type = "StandardSSD_LRS"
   create_option        = "Empty"
   disk_size_gb         = "8"
-  zone                 = "1"
+  zone                 = "2"
 
 }
 resource "azurerm_virtual_machine_data_disk_attachment" "dbattach" {
